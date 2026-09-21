@@ -4,8 +4,32 @@
 > improvisé. Périmètre = observer/documenter/hiérarchiser (≠ corriger, ≠ AIPD).
 
 ## 1. Périmètre et hors-périmètre
-_Ce qui est audité (modèle, code, dataset) ; ce qui est exclu (pen-test, AIPD,
-refonte). Les 2 lectorats du rapport (technique / DPO)._
+
+### Ce qui est audité
+- `legacy/train.py` : script d'entraînement.
+- `legacy/predict.py` : script de prédiction appelé en production.
+- `legacy/dms_predictor_v1.joblib` : modèle déployé (RandomForest, 4 variables
+  d'entrée : âge, nombre de comorbidités, IMC, sexe).
+- `data/dms_dataset.csv` : 10 000 séjours, 10 colonnes, sans valeur manquante.
+
+Trois volets : éthique (biais, RGPD santé, AI Act), technique (architecture,
+sécurité, SPOF), ressources (temps, mémoire, taille du modèle, comparaison à une
+alternative plus sobre).
+
+### Ce qui est hors périmètre
+- Correction du code hérité : il est lu et jamais modifié.
+- Architecture cible et proposition d'évolution (M7-B2).
+- AIPD juridique complète : les points RGPD sont qualifiés et des questions sont
+  posées au DPO, sans avis juridique.
+- Mitigation des biais : ils sont détectés, chiffrés et investigués uniquement.
+- Audit de sécurité offensif (pen-test) : seules les vulnérabilités évidentes sont
+  signalées (secret en clair, point de défaillance unique).
+
+### Lectorats du rapport
+| Lectorat | Ce qu'il attend |
+|---|---|
+| Hélène Tournier, directrice technique | Solidité, sécurité, scalabilité, coût en ressources, points de rupture |
+| Marc Lebourg, DPO | Conformité RGPD santé, qualification AI Act, biais et impact sur les patients |
 
 ## 2. Audit éthique
 _Variables sensibles (directes/indirectes) ; **disparate impact chiffré** sur ≥ 1
