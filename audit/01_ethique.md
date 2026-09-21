@@ -62,3 +62,34 @@ Condition qui ferait basculer : l'article 22 s'appliquerait si le score pilote s
 3. Quelle est la durée de conservation du dataset, et le `patient_id` est-il pseudonymisé ?
 4. Le dataset est-il constitué de données réelles ou synthétiques ?
 5. Pourquoi le sexe et l'IMC sont-ils utilisés comme variables d'entrée ?
+
+## 3. Qualification AI Act
+
+La santé ne suffit pas à rendre un système à haut risque. L'article 6 retient trois cas, parcourus ici à partir de l'usage décrit en section 1, qui reste incomplet.
+
+### Parcours de l'article 6
+
+| Cas | Question | Ce qu'on sait | Statut |
+|---|---|---|---|
+| Annexe I : dispositif médical (règlement 2017/745) | Le logiciel est-il destiné à un usage médical (diagnostic, décision de soin) ? | Il prédit une durée de séjour. Aucune finalité médicale déclarée. | Probablement non si l'usage est organisationnel. À instruire. |
+| Annexe III 5(a) : éligibilité aux soins, par ou pour une autorité publique | MediVox est-il une autorité publique, ou le score est-il utilisé pour une autorité publique ? | Groupe de cliniques privées. | Probablement non. À confirmer. |
+| Annexe III 5(d) : triage des patients en urgence | Le score sert-il à ordonner ou prioriser la prise en charge de patients ? | Il ne prédit pas une urgence mais une durée de séjour. | Probablement non. Dépend de l'usage réel. |
+| Exception 6(3) | Applicable seulement si un cas de l'Annexe III est retenu. | Évaluer la santé d'une personne relève du profilage : l'exception est fermée. | Sans effet ici : si l'Annexe III s'applique, le système est haut risque. |
+
+### Conclusion
+Niveau de risque : **indéterminé faute d'information sur l'usage réel**. Probablement pas haut risque si le score ne sert qu'à planifier les lits.
+
+Ce qui ferait basculer en haut risque :
+1. Le score sert à décider ou ordonner la prise en charge des patients (Annexe III 5(d)).
+2. Il est utilisé par ou pour une autorité publique pour évaluer l'accès aux soins (Annexe III 5(a)).
+3. Il est destiné à un usage clinique sur le patient, ce qui pourrait en faire un dispositif médical (Annexe I).
+
+### Obligations, conditionnées à la qualification
+- **Si haut risque** : gestion des risques, gouvernance des données dont l'examen des biais, journalisation, transparence envers les utilisateurs, supervision humaine, exactitude et robustesse.
+- **Si pas haut risque** : obligations de transparence éventuelles et bonnes pratiques. Le RGPD s'applique dans tous les cas (section 2).
+
+### Questions ouvertes au client
+1. Le score est-il utilisé pour ordonner ou prioriser l'admission ou la prise en charge des patients ?
+2. MediVox agit-il pour le compte d'une autorité publique (mission de service public, agence régionale de santé) ?
+3. Le système a-t-il une finalité médicale déclarée, ou est-il purement organisationnel ?
+4. Qui est le fournisseur du système au sens de l'AI Act, sachant que le prestataire d'origine est parti ?
